@@ -24,10 +24,17 @@ INSERT INTO departments (department_name) VALUES
     
 
 
-CREATE OR REPLACE FUNCTION get_avg_salary_in_department(department_name VARCHAR(50))
+CREATE OR REPLACE FUNCTION get_avg_salary_in_department(target_department_name VARCHAR(50))
 RETURNS NUMERIC(10, 2)
 AS $$
+DECLARE
+    avg_salary NUMERIC(10,2);
 BEGIN
-    -- Здесь напишите запрос для расчета средней зарплаты в указанном отделе
+    select avg(salary) into avg_salary from employees where employees.department in (
+        select department_id from departments where department_name = 'IT'
+    );
+    return avg_salary;
 END;
 $$ LANGUAGE plpgsql;
+
+select get_avg_salary_in_department('IT')

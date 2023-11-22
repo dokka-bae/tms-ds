@@ -24,11 +24,20 @@ INSERT INTO departments (department_name) VALUES
 
 
 
-CREATE OR REPLACE FUNCTION delete_employee(employee_id INT)
+CREATE OR REPLACE FUNCTION delete_employee(target_employee_id INT)
 RETURNS VOID
 AS $$
 BEGIN
-    -- Здесь напишите запрос для удаления сотрудника по employee_id
+    delete from employees
+    where employee_id = target_employee_id;
 END;
 $$ LANGUAGE plpgsql;
+
+select delete_employee(3)
+
+
+
+
+
+
     

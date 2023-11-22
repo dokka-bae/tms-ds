@@ -25,12 +25,12 @@ INSERT INTO departments (department_name) VALUES
     
     
     
-CREATE OR REPLACE FUNCTION get_employee_info(employee_id INT)
+CREATE OR REPLACE FUNCTION get_employee_info(target_employee_id INT)
 RETURNS TABLE (first_name VARCHAR(50), last_name VARCHAR(50), salary NUMERIC(10, 2))
 AS $$
 BEGIN
-    -- Здесь напишите запрос для выбора информации о сотруднике по employee_id
+    return query select employees.first_name,employees.last_name,employees.salary from employees where employees.employee_id = target_employee_id;
 END;
 $$ LANGUAGE plpgsql;
 
-select get_employee_info(1)
+select get_employee_info(1);

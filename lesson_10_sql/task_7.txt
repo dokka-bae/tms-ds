@@ -23,10 +23,17 @@ INSERT INTO departments (department_name) VALUES
     ('Finance');
     
 
-CREATE OR REPLACE FUNCTION increase_salary_in_department(department_name VARCHAR(50), percent_increase INT)
+CREATE OR REPLACE FUNCTION increase_salary_in_department(target_department_name VARCHAR(50), percent_increase INT)
 RETURNS VOID
 AS $$
 BEGIN
-    -- Здесь напишите запрос для увеличения зарплаты всех сотрудников в указанном отделе
+    update employees
+    set salary = employees.salary + employees.salary*percent_increase/100
+    where employees.department in (
+        select department_id from departments
+        where department_name = target_department_name
+        );
 END;
 $$ LANGUAGE plpgsql;
+
+select increase_salary_in_department('IT',50)
