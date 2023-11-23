@@ -12,7 +12,7 @@ Session = sessionmaker(autoflush=True, bind=engine)
 session = Session()
 
 
-def deleete_table(name):
+def delete_table(name):
     metadata = sqlalchemy.MetaData()
     metadata.reflect(bind=engine)
     metadata.tables.get("sqlite_master").drop(bind=engine)

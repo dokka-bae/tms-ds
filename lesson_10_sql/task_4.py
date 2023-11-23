@@ -13,7 +13,7 @@ session = Session()
 def get_student_with_two_more_courses():
     subquery = select(StudentsCourses.student_id)\
         .group_by(StudentsCourses.student_id)\
-        .having(func.count(StudentsCourses.student_id) > 1).scalar_subquery()
+        .having(func.count(StudentsCourses.student_id) > 2).scalar_subquery()
 
     query = select(Student)\
         .where(Student.id.in_(subquery))
