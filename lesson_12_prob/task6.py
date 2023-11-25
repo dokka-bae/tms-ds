@@ -5,11 +5,11 @@ from scipy import stats
 
 class Handler:
     def __init__(self, numbers: np.int64, predict_numbers: np.int64) -> None:
-        self.numbers = numbers
-        self.predict_numbers = predict_numbers
+        self.numbers: np.int64 = numbers
+        self.predict_numbers: np.int64 = predict_numbers
         self.run()
 
-    def run(self):
+    def run(self) -> None:
         print(stats.binom.pmf(self.predict_numbers, self.numbers, 0.5))
 
 
