@@ -15,8 +15,8 @@ from scipy import stats
 
 class Handler:
     def __init__(self, mean: np.float64, std: np.float64) -> None:
-        self.mean = mean
-        self.std = std
+        self.mean: np.float64 = mean
+        self.std: np.float64 = std
         self.run()
 
     def run(self) -> None:
