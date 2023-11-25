@@ -19,7 +19,7 @@ class Handler:
         self.std = std
         self.run()
 
-    def run(self):
+    def run(self) -> None:
         print(f"a) {1- stats.norm.cdf(x=182,loc=self.mean,scale=self.std)}")
         print(f"б) {1- stats.norm.cdf(x=190,loc=self.mean,scale=self.std)}")
         print(f"в) {stats.norm.cdf(x=190,loc=self.mean,scale=self.std) - stats.norm.cdf(x=166,loc=self.mean,scale=self.std)}")
