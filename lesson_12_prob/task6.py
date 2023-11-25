@@ -8,9 +8,10 @@ class Handler:
         self.numbers = numbers
         self.predict_numbers = predict_numbers
         self.run()
-    
+
     def run(self):
         print(stats.binom.pmf(self.predict_numbers, self.numbers, 0.5))
+
 
 if __name__ == '__main__':
     Handler(numbers=144, predict_numbers=70)
