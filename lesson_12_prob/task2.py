@@ -11,13 +11,13 @@ class Handler():
         self.run()
 
     def mean(self) -> np.float64:
-        return (self.start+1+self.end)/12
+        return (self.start+1+self.end)/2
 
     def variance(self) -> np.float64:
         return (self.end-self.start-1)**2/12
 
     def run(self) -> None:
-        print(self.mean(), self.variance)
+        print(self.mean(), self.variance())
 
 
 if __name__ == '__main__':
