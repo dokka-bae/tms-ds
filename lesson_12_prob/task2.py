@@ -11,10 +11,10 @@ class Handler():
         self.run()
 
     def mean(self) -> np.float64:
-        return (self.start+1+self.end)/2
+        return (self.startself.end)/2
 
     def variance(self) -> np.float64:
-        return (self.end-self.start-1)**2/12
+        return (self.end-self.start)**2/12
 
     def run(self) -> None:
         print(self.mean(), self.variance())
